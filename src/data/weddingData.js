@@ -152,6 +152,6 @@ export const weddingData = {
   ],
 
   credits: {
-    builtBy: 'Akinbo Adetayo',
+    builtBy: 'Solomon T.',
   },
 };

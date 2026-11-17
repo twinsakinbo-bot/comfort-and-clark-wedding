@@ -13,7 +13,7 @@ describe('weddingData', () => {
     expect(weddingData.couple.families).toEqual(['Mr & Mrs Akinbo', 'Mr & Mrs Monks']);
     expect(weddingData.specialCelebration.honoree).toBe('Mrs. Idowu Akinbo');
     expect(weddingData.specialCelebration.milestone).toBe('60th Birthday');
-    expect(weddingData.credits.builtBy).toBe('Akinbo Adetayo');
+    expect(weddingData.credits.builtBy).toBe('Solomon T.');
   });
 
   it('sets the event date, time, and Funplex Event Center venue details', () => {

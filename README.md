@@ -6,7 +6,7 @@ Wedding website for **Comfort & Clark** and the **60th Birthday Celebration of M
 - **Venue:** Funplex Event Center, No. 39 CMD Road, Magodo, Ikosi, Lagos, Nigeria 100248
 - **Colours of the Day:** Sky Blue, Gold, and Navy Blue
 
-Built by **Akinbo Adetayo**.
+Built by **Solomon T.**
 
 ## Development
 
