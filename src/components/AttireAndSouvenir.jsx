@@ -1,0 +1,133 @@
+import { useState } from 'react';
+import { m, AnimatePresence } from 'framer-motion';
+import { weddingData } from '../data/weddingData';
+import Lightbox from './Lightbox';
+import { ScrollReveal, StaggerGroup, StaggerItem } from './MotionPrimitives';
+import { APPLE_EASE } from '../constants/motion';
+
+export default function AttireAndSouvenir() {
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+
+  const allImages = [...weddingData.asoEbi.map((i) => i.image), weddingData.souvenir.image];
+
+  const openImage = (idx) => {
+    setLightboxIndex(idx);
+    setLightboxOpen(true);
+  };
+
+  return (
+    <section
+      id="attire"
+      className="py-20 lg:py-28 px-6 bg-white border-b border-brand-border"
+      style={{ scrollMarginTop: '72px' }}
+    >
+      <div className="max-w-[1100px] mx-auto">
+        <ScrollReveal className="text-center mb-12">
+          <h2 className="font-serif text-4xl sm:text-5xl text-brand-navy mb-3">
+            Colours of the Day, Aso Ebi &amp; Souvenir
+          </h2>
+          <p className="text-brand-muted text-sm sm:text-base">
+            Sky Blue, Gold, and Navy Blue
+          </p>
+        </ScrollReveal>
+
+        {/* Colour of the Day Swatches */}
+        <StaggerGroup
+          stagger={0.08}
+          className="grid grid-cols-3 gap-4 sm:gap-6 mb-16 max-w-[780px] mx-auto"
+        >
+          {weddingData.colours.map((colour) => (
+            <StaggerItem key={colour.name}>
+              <m.div
+                whileHover={{ y: -3 }}
+                transition={{ duration: 0.25, ease: APPLE_EASE }}
+                className="rounded-xl h-[100px] sm:h-[120px] flex items-center justify-center border border-black/10 px-3 text-center shadow-[0_6px_20px_rgba(11,28,58,0.06)]"
+                style={{ backgroundColor: colour.swatch, color: colour.textColor }}
+              >
+                <span className="font-serif text-xl sm:text-2xl font-semibold">{colour.name}</span>
+              </m.div>
+            </StaggerItem>
+          ))}
+        </StaggerGroup>
+
+        {/* Official Aso Ebi Clothes */}
+        <div className="mb-16">
+          <ScrollReveal>
+            <h3 className="font-serif text-2xl sm:text-3xl text-brand-navy mb-6 text-center">
+              Aso Ebi Attire
+            </h3>
+          </ScrollReveal>
+
+          <StaggerGroup stagger={0.07} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {weddingData.asoEbi.map((item, idx) => (
+              <StaggerItem key={item.label}>
+                <m.button
+                  type="button"
+                  whileHover={{ y: -4 }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ duration: 0.28, ease: APPLE_EASE }}
+                  onClick={() => openImage(idx)}
+                  className="w-full text-left group bg-brand-sky-wash border border-brand-border rounded-2xl overflow-hidden hover:border-brand-gold transition-colors cursor-pointer shadow-[0_6px_20px_rgba(11,28,58,0.04)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-navy"
+                >
+                  <div className="aspect-[4/5] overflow-hidden bg-white">
+                    <img
+                      src={item.image}
+                      alt={`${item.label} — ${item.subtitle}`}
+                      loading="lazy"
+                      className="w-full h-full object-cover object-center transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-4">
+                    <p className="font-serif text-xl text-brand-navy">{item.label}</p>
+                    <p className="text-xs text-brand-muted mt-0.5">{item.subtitle}</p>
+                  </div>
+                </m.button>
+              </StaggerItem>
+            ))}
+          </StaggerGroup>
+        </div>
+
+        {/* Wedding Souvenir */}
+        <ScrollReveal>
+          <div className="max-w-[820px] mx-auto bg-brand-sky-wash border border-brand-border rounded-2xl overflow-hidden grid sm:grid-cols-2 shadow-[0_8px_28px_rgba(11,28,58,0.05)]">
+            <m.button
+              type="button"
+              whileTap={{ scale: 0.99 }}
+              onClick={() => openImage(weddingData.asoEbi.length)}
+              className="aspect-square bg-black overflow-hidden group cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-navy"
+              aria-label="View wedding souvenir full size"
+            >
+              <img
+                src={weddingData.souvenir.image}
+                alt={weddingData.souvenir.label}
+                loading="lazy"
+                className="w-full h-full object-cover object-center transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
+              />
+            </m.button>
+
+            <div className="p-8 sm:p-10 flex flex-col justify-center">
+              <h3 className="font-serif text-3xl text-brand-navy mb-3">
+                {weddingData.souvenir.label}
+              </h3>
+              <p className="text-brand-muted text-sm sm:text-base leading-relaxed">
+                {weddingData.souvenir.subtitle}
+              </p>
+            </div>
+          </div>
+        </ScrollReveal>
+      </div>
+
+      <AnimatePresence>
+        {lightboxOpen && (
+          <Lightbox
+            images={allImages}
+            currentIndex={lightboxIndex}
+            onClose={() => setLightboxOpen(false)}
+            onChangeIndex={setLightboxIndex}
+          />
+        )}
+      </AnimatePresence>
+    </section>
+  );
+}

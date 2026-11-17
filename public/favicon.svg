@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <circle cx="32" cy="32" r="30" fill="#0B1C3A" stroke="#E6C875" stroke-width="2.5"/>
+  <circle cx="32" cy="32" r="25" stroke="#5BAEE0" stroke-opacity="0.45" stroke-width="1"/>
+  <path d="M23 20l4-4 5 4 5-4 4 4-2 5H25l-2-5z" fill="#E6C875"/>
+  <text x="32" y="42" text-anchor="middle" fill="#FCFAF5" font-family="Georgia, serif" font-size="18" font-weight="600" letter-spacing="1.5">C&amp;C</text>
+</svg>
