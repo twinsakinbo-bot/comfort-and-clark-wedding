@@ -55,7 +55,8 @@ describe('Comfort & Clark Wedding Site', () => {
     expect(screen.getByRole('button', { name: 'Show couple photo 4 of 4' })).toBeTruthy();
   });
 
-  it('submits the RSVP form cleanly', async () => {
+  it('prepares an RSVP for the first coordinator without claiming it was sent', async () => {
+    const open = vi.spyOn(window, 'open').mockImplementation(() => null);
     render(<App />);
 
     fireEvent.change(screen.getByPlaceholderText('First name'), {
@@ -64,13 +65,14 @@ describe('Comfort & Clark Wedding Site', () => {
     fireEvent.change(screen.getByPlaceholderText('Last name'), {
       target: { value: 'Akinbo' },
     });
-    fireEvent.change(screen.getByPlaceholderText('guest@example.com'), {
-      target: { value: 'tunde@example.com' },
-    });
     fireEvent.click(screen.getByRole('button', { name: "Yes, I'll be there" }));
-    fireEvent.click(screen.getByRole('button', { name: /Send RSVP/i }));
+    fireEvent.click(screen.getByRole('button', { name: /Continue to WhatsApp/i }));
 
-    expect(await screen.findByRole('heading', { name: 'Thank You' })).toBeTruthy();
-    expect(screen.getByText(/Tunde Akinbo/i)).toBeTruthy();
+    expect(await screen.findByRole('heading', { name: 'Finish in WhatsApp' })).toBeTruthy();
+    expect(screen.getByText(/Nothing has been sent from this page/i)).toBeTruthy();
+    expect(open).toHaveBeenCalledOnce();
+    expect(open.mock.calls[0][0]).toContain('https://wa.me/2348140038914?text=');
+    expect(decodeURIComponent(open.mock.calls[0][0])).toContain('Name: Tunde Akinbo');
+    open.mockRestore();
   });
 });

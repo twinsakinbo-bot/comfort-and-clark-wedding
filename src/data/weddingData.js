@@ -84,22 +84,22 @@ export const weddingData = {
 
   asoEbi: [
     {
-      image: '/images/asoebi-women-cloth.jpg',
+      image: '/images/asoebi-women-cloth.webp',
       label: "Women's Cloth",
       subtitle: 'Sky Blue Lace',
     },
     {
-      image: '/images/asoebi-women-gele.jpg',
+      image: '/images/asoebi-women-gele.webp',
       label: "Women's Gele",
       subtitle: 'Navy & Sky Blue',
     },
     {
-      image: '/images/asoebi-men-cloth.jpg',
+      image: '/images/asoebi-men-cloth.webp',
       label: "Men's Cloth",
       subtitle: 'Sky Blue Cotton',
     },
     {
-      image: '/images/asoebi-men-fila.jpg',
+      image: '/images/asoebi-men-fila.webp',
       label: "Men's Fila (Cap)",
       subtitle: 'Navy & Sky Blue',
     },
@@ -107,22 +107,22 @@ export const weddingData = {
 
   souvenirs: [
     {
-      image: '/images/souvenir-women-pot.jpg',
+      image: '/images/souvenir-women-pot.webp',
       label: "Women's Aso Ebi Souvenir",
       subtitle: "Lock-lid cooking pot — for Women with Gele & Cloth",
     },
     {
-      image: '/images/souvenir-men-flask.jpg',
+      image: '/images/souvenir-men-flask.webp',
       label: "Men's Aso Ebi Souvenir",
       subtitle: "Insulated food flask — for Men with Fila & Cloth",
     },
     {
-      image: '/images/souvenir-asoebi-bag.jpg',
+      image: '/images/souvenir-asoebi-bag.webp',
       label: 'Aso Ebi Souvenir Bag',
       subtitle: "Gold tote bag — included for Men & Women's Aso Ebi",
     },
     {
-      image: '/images/souvenir-containers.jpg',
+      image: '/images/souvenir-containers.webp',
       label: 'Wedding Souvenir',
       subtitle: 'Nested plastic food storage containers for guests',
     },
@@ -130,22 +130,22 @@ export const weddingData = {
 
   gallery: [
     {
-      src: '/images/couple-proposal.jpg',
+      src: '/images/couple-proposal.webp',
       alt: 'Clark proposing to Comfort under a blue and white floral arch',
       position: '50% 34%',
     },
     {
-      src: '/images/couple-portrait.jpg',
+      src: '/images/couple-portrait.webp',
       alt: 'Comfort and Clark smiling together holding red roses',
       position: '50% 10%',
     },
     {
-      src: '/images/couple-sparklers.jpg',
+      src: '/images/couple-sparklers.webp',
       alt: 'Comfort and Clark holding hands beside sparklers',
       position: '50% 16%',
     },
     {
-      src: '/images/couple-dance.jpg',
+      src: '/images/couple-dance.webp',
       alt: 'Comfort and Clark dancing hand-in-hand under the floral arch',
       position: '50% 14%',
     },

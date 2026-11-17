@@ -1,6 +1,7 @@
 import { LazyMotion, MotionConfig, domAnimation } from 'framer-motion';
 import Header from './components/Header';
 import Hero from './components/Hero';
+import EventQuickInfo from './components/EventQuickInfo';
 import Countdown from './components/Countdown';
 import WeddingDetails from './components/WeddingDetails';
 import AttireAndSouvenir from './components/AttireAndSouvenir';
@@ -20,6 +21,7 @@ export default function App() {
           <ChapterRail />
           <main>
             <Hero />
+            <EventQuickInfo />
             <Countdown />
             <WeddingDetails />
             <AttireAndSouvenir />

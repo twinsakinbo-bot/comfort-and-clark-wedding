@@ -79,6 +79,7 @@ export default function AttireAndSouvenir() {
                       src={item.image}
                       alt={`${item.label} — ${item.subtitle}`}
                       loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover object-center transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
                     />
                   </div>
@@ -116,6 +117,7 @@ export default function AttireAndSouvenir() {
                       src={souvenir.image}
                       alt={`${souvenir.label} — ${souvenir.subtitle}`}
                       loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover object-center transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
                     />
                   </div>

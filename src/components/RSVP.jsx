@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { m, AnimatePresence } from 'framer-motion';
 import { weddingData } from '../data/weddingData';
-import { Phone, Copy, Check, CircleCheck } from 'lucide-react';
+import { Phone, Copy, Check, MessageCircle, ExternalLink } from 'lucide-react';
 import { ScrollReveal, StaggerGroup, StaggerItem } from './MotionPrimitives';
 import { APPLE_EASE } from '../constants/motion';
 
@@ -9,21 +9,17 @@ export default function RSVP() {
   const [form, setForm] = useState({
     firstName: '',
     lastName: '',
-    email: '',
     attendance: null,
     message: '',
   });
   const [errors, setErrors] = useState({});
-  const [submitted, setSubmitted] = useState(false);
+  const [handoffUrl, setHandoffUrl] = useState('');
   const [copiedPhone, setCopiedPhone] = useState(null);
 
   const validate = () => {
     const errs = {};
     if (!form.firstName.trim()) errs.firstName = 'First name is required';
     if (!form.lastName.trim()) errs.lastName = 'Last name is required';
-    if (!form.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
-      errs.email = 'Please enter a valid email address';
-    }
     if (form.attendance === null) errs.attendance = 'Please select your attendance';
     return errs;
   };
@@ -33,7 +29,16 @@ export default function RSVP() {
     const errs = validate();
     setErrors(errs);
     if (Object.keys(errs).length > 0) return;
-    setSubmitted(true);
+    const lines = [
+      `Hello ${weddingData.rsvpContacts[0].name}, I would like to RSVP for Comfort & Clark's traditional wedding on 9 January 2027.`,
+      `Name: ${form.firstName.trim()} ${form.lastName.trim()}`,
+      `Attendance: ${form.attendance ? 'Yes, I will attend' : 'No, I cannot attend'}`,
+    ];
+    if (form.message.trim()) lines.push(`Message: ${form.message.trim()}`);
+    const number = weddingData.rsvpContacts[0].tel.replace(/\D/g, '');
+    const url = `https://wa.me/${number}?text=${encodeURIComponent(lines.join('\n'))}`;
+    setHandoffUrl(url);
+    window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   const update = (field, value) => {
@@ -114,32 +119,34 @@ export default function RSVP() {
           ))}
         </StaggerGroup>
 
-        {/* Simple Online RSVP Form */}
+        {/* Prepare an RSVP message for the first coordinator on WhatsApp */}
         <ScrollReveal delay={0.1} className="max-w-[620px] mx-auto">
           <AnimatePresence mode="wait">
-            {submitted ? (
+            {handoffUrl ? (
               <m.div
-                key="submitted"
+                key="handoff"
                 initial={{ opacity: 0, scale: 0.97, y: 12 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.97 }}
                 transition={{ duration: 0.35, ease: APPLE_EASE }}
                 className="border border-brand-border rounded-2xl p-8 sm:p-10 text-center bg-brand-sky-wash shadow-[0_8px_28px_rgba(11,28,58,0.05)]"
               >
-                <CircleCheck size={32} className="mx-auto text-brand-navy mb-4" />
-                <h3 className="font-serif text-3xl text-brand-navy mb-2">Thank You</h3>
+                <MessageCircle size={32} className="mx-auto text-brand-navy mb-4" />
+                <h3 className="font-serif text-3xl text-brand-navy mb-2">Finish in WhatsApp</h3>
                 <p className="text-brand-muted text-sm leading-relaxed mb-6">
-                  Thank you, <strong>{form.firstName} {form.lastName}</strong>. Your RSVP response
-                  has been noted. Please reach out to any of the coordinators above for Aso Ebi or
-                  seating inquiries.
+                  Your message for {weddingData.rsvpContacts[0].name} is ready. Please press <strong>Send</strong> in WhatsApp to complete your RSVP. Nothing has been sent from this page.
                 </p>
+                <a href={handoffUrl} target="_blank" rel="noopener noreferrer" className="mb-3 inline-flex items-center gap-2 rounded-full bg-brand-navy px-6 py-2.5 text-xs font-semibold uppercase tracking-wider text-white hover:bg-brand-navy-mid focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold">
+                  Open WhatsApp <ExternalLink size={14} aria-hidden="true" />
+                </a>
+                <br />
                 <m.button
                   whileTap={{ scale: 0.96 }}
                   type="button"
-                  onClick={() => setSubmitted(false)}
+                  onClick={() => setHandoffUrl('')}
                   className="px-6 py-2.5 rounded-full border border-brand-border bg-white text-xs font-semibold tracking-wider uppercase text-brand-navy hover:bg-brand-cream transition-colors cursor-pointer"
                 >
-                  Edit Response
+                  Edit RSVP
                 </m.button>
               </m.div>
             ) : (
@@ -204,31 +211,6 @@ export default function RSVP() {
                   </div>
                 </div>
 
-                <div className="mb-4">
-                  <label
-                    htmlFor="rsvp-email"
-                    className="block text-xs font-semibold text-brand-navy mb-1.5"
-                  >
-                    Email *
-                  </label>
-                  <input
-                    id="rsvp-email"
-                    type="email"
-                    autoComplete="email"
-                    placeholder="guest@example.com"
-                    value={form.email}
-                    onChange={(e) => update('email', e.target.value)}
-                    aria-invalid={Boolean(errors.email)}
-                    aria-describedby={errors.email ? 'rsvp-email-error' : undefined}
-                    className={inputClasses('email')}
-                  />
-                  {errors.email && (
-                    <p id="rsvp-email-error" className="text-red-600 text-xs mt-1">
-                      {errors.email}
-                    </p>
-                  )}
-                </div>
-
                 <div className="mb-5">
                   <span className="block text-xs font-semibold text-brand-navy mb-2">
                     Will you attend? *
@@ -276,13 +258,14 @@ export default function RSVP() {
                   />
                 </div>
 
+                <p className="mb-4 text-xs leading-relaxed text-brand-muted">We’ll prepare a WhatsApp message to {weddingData.rsvpContacts[0].name}. Your RSVP is complete when you send it there.</p>
                 <m.button
                   whileHover={{ y: -1 }}
                   whileTap={{ scale: 0.98 }}
                   type="submit"
                   className="w-full py-3.5 bg-brand-navy text-brand-cream rounded-full text-xs font-semibold tracking-[0.15em] uppercase hover:bg-brand-navy-mid transition-colors cursor-pointer"
                 >
-                  Send RSVP
+                  Continue to WhatsApp
                 </m.button>
               </m.form>
             )}

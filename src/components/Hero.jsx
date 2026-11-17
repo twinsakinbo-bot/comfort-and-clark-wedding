@@ -77,6 +77,8 @@ export default function Hero() {
               <img
                 src={currentSlide.src}
                 alt={currentSlide.alt}
+                decoding="async"
+                fetchPriority={activeIndex === 0 ? 'high' : 'auto'}
                 style={{ objectPosition: currentSlide.position || '50% 15%' }}
                 className="w-full h-full object-cover"
               />
@@ -192,7 +194,7 @@ export default function Hero() {
       </m.div>
       <button
         type="button"
-        onClick={() => document.getElementById('countdown')?.scrollIntoView({ behavior: prefersReduced ? 'auto' : 'smooth' })}
+        onClick={() => document.getElementById('quick-info')?.scrollIntoView({ behavior: prefersReduced ? 'auto' : 'smooth' })}
         className="absolute z-20 bottom-9 left-8 hidden lg:flex items-center gap-3 text-[10px] uppercase tracking-[0.2em] text-white/75 hover:text-brand-gold-light transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold-light rounded-md"
       >
         <span className="flex h-9 w-6 items-start justify-center rounded-full border border-white/45 pt-1.5" aria-hidden="true">

@@ -47,6 +47,7 @@ export default function Gallery() {
                   src={photo.src}
                   alt={photo.alt}
                   loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover object-top transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
                 />
               </m.button>
