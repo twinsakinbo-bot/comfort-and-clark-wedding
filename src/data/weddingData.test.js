@@ -33,13 +33,14 @@ describe('weddingData', () => {
     ]);
   });
 
-  it('references existing local image files for all Aso Ebi clothes, souvenir, and couple gallery', () => {
+  it('references existing local image files for all Aso Ebi clothes, souvenirs, and couple gallery', () => {
     expect(weddingData.asoEbi).toHaveLength(4);
+    expect(weddingData.souvenirs).toHaveLength(4);
     expect(weddingData.gallery).toHaveLength(4);
 
     const imagePaths = [
       ...weddingData.asoEbi.map((item) => item.image),
-      weddingData.souvenir.image,
+      ...weddingData.souvenirs.map((item) => item.image),
       ...weddingData.gallery.map((item) => item.src),
     ];
 

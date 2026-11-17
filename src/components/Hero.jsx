@@ -27,10 +27,8 @@ export default function Hero() {
     offset: ['start start', 'end start'],
   });
 
-  // Subtle GPU-only depth parallax on scroll (disabled for reduced motion)
-  const photoY = useTransform(scrollYProgress, [0, 1], prefersReduced ? [0, 0] : [0, 56]);
   const textOpacity = useTransform(scrollYProgress, [0, 0.78], prefersReduced ? [1, 1] : [1, 0.15]);
-  const textY = useTransform(scrollYProgress, [0, 1], prefersReduced ? [0, 0] : [0, 28]);
+  const textY = useTransform(scrollYProgress, [0, 1], prefersReduced ? [0, 0] : [0, 24]);
 
   const scrollTo = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -40,49 +38,66 @@ export default function Hero() {
     <section
       ref={heroRef}
       id="welcome"
-      className="relative min-h-[92vh] sm:min-h-screen pt-[72px] flex items-end overflow-hidden bg-brand-navy text-brand-cream"
+      className="relative min-h-[92vh] sm:min-h-screen pt-[72px] flex items-end overflow-hidden bg-[#071226] text-brand-cream"
     >
-      {/* Crossfading Full-Bleed Couple Photographs anchored below the 72px header */}
-      <m.div
-        style={{ y: photoY }}
-        className="absolute inset-x-0 bottom-0 top-[72px] will-change-transform overflow-hidden"
-        aria-live="off"
+      {/* Subtle atmospheric color fill on wide monitors outside the sharp portrait stage */}
+      <div
+        className="hidden md:block absolute inset-x-0 bottom-0 top-[72px] overflow-hidden pointer-events-none"
+        aria-hidden="true"
       >
         <AnimatePresence initial={false} mode="sync">
-          <m.div
-            key={currentSlide.src}
-            initial={{ opacity: 0, scale: prefersReduced ? 1 : 1.03 }}
-            animate={{ opacity: 1, scale: 1 }}
+          <m.img
+            key={`ambient-${currentSlide.src}`}
+            src={currentSlide.src}
+            alt=""
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.28 }}
             exit={{ opacity: 0 }}
-            transition={{
-              opacity: { duration: 0.9, ease: APPLE_EASE },
-              scale: { duration: 5.5, ease: APPLE_EASE },
-            }}
-            className="absolute inset-0 will-change-transform"
-          >
-            <img
-              src={currentSlide.src}
-              alt={currentSlide.alt}
-              style={{ objectPosition: currentSlide.position || '50% 15%' }}
-              className="w-full h-full object-cover"
-            />
-          </m.div>
+            transition={{ duration: 0.9, ease: APPLE_EASE }}
+            className="w-full h-full object-cover blur-3xl scale-110"
+          />
         </AnimatePresence>
-      </m.div>
+      </div>
 
-      {/* Bottom-weighted scrim so all 4 photos stay vivid behind overlayed copy */}
+      {/* Sharp, un-upscaled Couple Photo Stage (max 780px wide on desktop so photos stay crisp) */}
+      <div
+        className="absolute inset-x-0 bottom-0 top-[72px] flex justify-center overflow-hidden pointer-events-none"
+        aria-live="off"
+      >
+        <div className="relative w-full md:max-w-[780px] h-full md:[mask-image:linear-gradient(to_right,transparent_0%,black_10%,black_90%,transparent_100%)]">
+          <AnimatePresence initial={false} mode="sync">
+            <m.div
+              key={currentSlide.src}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.9, ease: APPLE_EASE }}
+              className="absolute inset-0"
+            >
+              <img
+                src={currentSlide.src}
+                alt={currentSlide.alt}
+                style={{ objectPosition: currentSlide.position || '50% 15%' }}
+                className="w-full h-full object-cover"
+              />
+            </m.div>
+          </AnimatePresence>
+        </div>
+      </div>
+
+      {/* Bottom-weighted scrim so overlayed text stays legible over all 4 photos */}
       <div
         className="absolute inset-x-0 bottom-0 top-[72px] pointer-events-none"
         style={{
           background:
-            'linear-gradient(to top, rgba(7, 18, 38, 0.98) 0%, rgba(7, 18, 38, 0.76) 28%, rgba(7, 18, 38, 0.16) 60%, rgba(7, 18, 38, 0.22) 100%)',
+            'linear-gradient(to top, rgba(7, 18, 38, 0.98) 0%, rgba(7, 18, 38, 0.78) 28%, rgba(7, 18, 38, 0.14) 58%, rgba(7, 18, 38, 0.18) 100%)',
         }}
       />
 
       {/* Wedding Announcement Overlayed Over Changing Photos */}
       <m.div
         style={{ opacity: textOpacity, y: textY }}
-        className="relative z-10 max-w-[1040px] mx-auto px-5 sm:px-8 pb-8 sm:pb-12 pt-44 sm:pt-56 w-full text-center will-change-transform"
+        className="relative z-10 max-w-[1040px] mx-auto px-5 sm:px-8 pb-8 sm:pb-12 pt-44 sm:pt-56 w-full text-center"
       >
         <m.p
           initial={{ opacity: 0, y: 14 }}
@@ -147,7 +162,11 @@ export default function Hero() {
         </m.div>
 
         {/* Subtle Hero Photo Switcher Dots */}
-        <div className="flex items-center justify-center gap-1" role="group" aria-label="Couple hero photos">
+        <div
+          className="flex items-center justify-center gap-1"
+          role="group"
+          aria-label="Couple hero photos"
+        >
           {slides.map((slide, idx) => {
             const isCurrent = idx === activeIndex;
             return (
@@ -161,7 +180,9 @@ export default function Hero() {
               >
                 <span
                   className={`block h-1.5 rounded-full transition-all duration-300 ${
-                    isCurrent ? 'w-6 bg-brand-gold-light' : 'w-1.5 bg-brand-cream/45 hover:bg-brand-cream/80'
+                    isCurrent
+                      ? 'w-6 bg-brand-gold-light'
+                      : 'w-1.5 bg-brand-cream/45 hover:bg-brand-cream/80'
                   }`}
                 />
               </button>

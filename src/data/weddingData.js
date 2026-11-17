@@ -105,32 +105,49 @@ export const weddingData = {
     },
   ],
 
-  souvenir: {
-    image: '/images/souvenir-containers.jpg',
-    label: 'Wedding Souvenir',
-    subtitle: 'Nested plastic food storage container sets for our guests',
-  },
+  souvenirs: [
+    {
+      image: '/images/souvenir-women-pot.jpg',
+      label: "Women's Aso Ebi Souvenir",
+      subtitle: "Lock-lid cooking pot — for Women with Gele & Cloth",
+    },
+    {
+      image: '/images/souvenir-men-flask.jpg',
+      label: "Men's Aso Ebi Souvenir",
+      subtitle: "Insulated food flask — for Men with Fila & Cloth",
+    },
+    {
+      image: '/images/souvenir-asoebi-bag.jpg',
+      label: 'Aso Ebi Souvenir Bag',
+      subtitle: "Gold tote bag — included for Men & Women's Aso Ebi",
+    },
+    {
+      image: '/images/souvenir-containers.jpg',
+      label: 'Wedding Souvenir',
+      subtitle: 'Nested plastic food storage containers for guests',
+    },
+  ],
 
   gallery: [
     {
       src: '/images/couple-proposal.jpg',
       alt: 'Clark proposing to Comfort under a blue and white floral arch',
-      position: '50% 42%',
+      position: '50% 34%',
     },
     {
       src: '/images/couple-portrait.jpg',
       alt: 'Comfort and Clark smiling together holding red roses',
-      position: '50% 6%',
+      position: '50% 10%',
     },
     {
       src: '/images/couple-sparklers.jpg',
       alt: 'Comfort and Clark holding hands beside sparklers',
-      position: '50% 10%',
+      position: '50% 16%',
     },
     {
       src: '/images/couple-dance.jpg',
       alt: 'Comfort and Clark dancing hand-in-hand under the floral arch',
-      position: '50% 8%',
+      position: '50% 14%',
     },
   ],
 

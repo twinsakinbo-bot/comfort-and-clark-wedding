@@ -32,11 +32,14 @@ describe('Comfort & Clark Wedding Site', () => {
     expect(screen.getByText('Gold')).toBeTruthy();
     expect(screen.getByText('Navy Blue')).toBeTruthy();
 
-    // Aso Ebi Clothes & Souvenir
+    // Aso Ebi Clothes & Souvenirs
     expect(screen.getByText("Women's Cloth")).toBeTruthy();
     expect(screen.getByText("Women's Gele")).toBeTruthy();
     expect(screen.getByText("Men's Cloth")).toBeTruthy();
     expect(screen.getByText("Men's Fila (Cap)")).toBeTruthy();
+    expect(screen.getByText("Women's Aso Ebi Souvenir")).toBeTruthy();
+    expect(screen.getByText("Men's Aso Ebi Souvenir")).toBeTruthy();
+    expect(screen.getByText('Aso Ebi Souvenir Bag')).toBeTruthy();
     expect(screen.getByText('Wedding Souvenir')).toBeTruthy();
 
     // RSVP Contacts

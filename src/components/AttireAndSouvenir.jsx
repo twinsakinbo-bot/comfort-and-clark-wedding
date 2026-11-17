@@ -9,7 +9,10 @@ export default function AttireAndSouvenir() {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
 
-  const allImages = [...weddingData.asoEbi.map((i) => i.image), weddingData.souvenir.image];
+  const allImages = [
+    ...weddingData.asoEbi.map((i) => i.image),
+    ...weddingData.souvenirs.map((s) => s.image),
+  ];
 
   const openImage = (idx) => {
     setLightboxIndex(idx);
@@ -25,7 +28,7 @@ export default function AttireAndSouvenir() {
       <div className="max-w-[1100px] mx-auto">
         <ScrollReveal className="text-center mb-12">
           <h2 className="font-serif text-4xl sm:text-5xl text-brand-navy mb-3">
-            Colours of the Day, Aso Ebi &amp; Souvenir
+            Colours of the Day, Aso Ebi &amp; Souvenirs
           </h2>
           <p className="text-brand-muted text-sm sm:text-base">
             Sky Blue, Gold, and Navy Blue
@@ -88,34 +91,44 @@ export default function AttireAndSouvenir() {
           </StaggerGroup>
         </div>
 
-        {/* Wedding Souvenir */}
-        <ScrollReveal>
-          <div className="max-w-[820px] mx-auto bg-brand-sky-wash border border-brand-border rounded-2xl overflow-hidden grid sm:grid-cols-2 shadow-[0_8px_28px_rgba(11,28,58,0.05)]">
-            <m.button
-              type="button"
-              whileTap={{ scale: 0.99 }}
-              onClick={() => openImage(weddingData.asoEbi.length)}
-              className="aspect-square bg-black overflow-hidden group cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-navy"
-              aria-label="View wedding souvenir full size"
-            >
-              <img
-                src={weddingData.souvenir.image}
-                alt={weddingData.souvenir.label}
-                loading="lazy"
-                className="w-full h-full object-cover object-center transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
-              />
-            </m.button>
+        {/* Wedding Souvenirs (Women, Men, Aso Ebi Bag & General Guests) */}
+        <div>
+          <ScrollReveal>
+            <h3 className="font-serif text-2xl sm:text-3xl text-brand-navy mb-6 text-center">
+              Wedding Souvenirs
+            </h3>
+          </ScrollReveal>
 
-            <div className="p-8 sm:p-10 flex flex-col justify-center">
-              <h3 className="font-serif text-3xl text-brand-navy mb-3">
-                {weddingData.souvenir.label}
-              </h3>
-              <p className="text-brand-muted text-sm sm:text-base leading-relaxed">
-                {weddingData.souvenir.subtitle}
-              </p>
-            </div>
-          </div>
-        </ScrollReveal>
+          <StaggerGroup stagger={0.07} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {weddingData.souvenirs.map((souvenir, idx) => (
+              <StaggerItem key={souvenir.label}>
+                <m.button
+                  type="button"
+                  whileHover={{ y: -4 }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ duration: 0.28, ease: APPLE_EASE }}
+                  onClick={() => openImage(weddingData.asoEbi.length + idx)}
+                  className="w-full text-left group bg-brand-sky-wash border border-brand-border rounded-2xl overflow-hidden hover:border-brand-gold transition-colors cursor-pointer shadow-[0_6px_20px_rgba(11,28,58,0.04)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-navy h-full flex flex-col"
+                >
+                  <div className="aspect-square overflow-hidden bg-white">
+                    <img
+                      src={souvenir.image}
+                      alt={`${souvenir.label} — ${souvenir.subtitle}`}
+                      loading="lazy"
+                      className="w-full h-full object-cover object-center transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-5 flex-1">
+                    <p className="font-serif text-xl text-brand-navy">{souvenir.label}</p>
+                    <p className="text-xs text-brand-muted mt-1 leading-relaxed">
+                      {souvenir.subtitle}
+                    </p>
+                  </div>
+                </m.button>
+              </StaggerItem>
+            ))}
+          </StaggerGroup>
+        </div>
       </div>
 
       <AnimatePresence>
