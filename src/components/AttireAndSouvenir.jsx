@@ -39,17 +39,17 @@ export default function AttireAndSouvenir() {
         {/* Colour of the Day Swatches */}
         <StaggerGroup
           stagger={0.08}
-          className="grid grid-cols-3 gap-4 sm:gap-6 mb-16 max-w-[780px] mx-auto"
+          className="grid grid-cols-3 gap-4 sm:gap-6 lg:gap-7 mb-16 max-w-[780px] lg:max-w-[1020px] mx-auto"
         >
           {weddingData.colours.map((colour) => (
             <StaggerItem key={colour.name}>
               <m.div
                 whileHover={{ y: -3 }}
                 transition={{ duration: 0.25, ease: APPLE_EASE }}
-                className="rounded-xl h-[100px] sm:h-[120px] flex items-center justify-center border border-black/10 px-3 text-center shadow-[0_6px_20px_rgba(11,28,58,0.06)]"
+                className="rounded-xl lg:rounded-2xl h-[100px] sm:h-[120px] lg:h-[170px] xl:h-[185px] flex items-center justify-center border border-black/10 px-3 text-center shadow-[0_6px_20px_rgba(11,28,58,0.06)]"
                 style={{ backgroundColor: colour.swatch, color: colour.textColor }}
               >
-                <span className="font-serif text-xl sm:text-2xl font-semibold">{colour.name}</span>
+                <span className="font-serif text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-semibold">{colour.name}</span>
               </m.div>
             </StaggerItem>
           ))}
