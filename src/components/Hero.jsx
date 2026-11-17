@@ -31,7 +31,7 @@ export default function Hero() {
   const textY = useTransform(scrollYProgress, [0, 1], prefersReduced ? [0, 0] : [0, 24]);
 
   const scrollTo = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    document.getElementById(id)?.scrollIntoView({ behavior: prefersReduced ? 'auto' : 'smooth', block: 'start' });
   };
 
   return (
@@ -97,7 +97,7 @@ export default function Hero() {
       {/* Wedding Announcement Overlayed Over Changing Photos */}
       <m.div
         style={{ opacity: textOpacity, y: textY }}
-        className="relative z-10 max-w-[1040px] mx-auto px-5 sm:px-8 pb-8 sm:pb-12 pt-44 sm:pt-56 w-full text-center"
+        className="relative z-10 max-w-[1040px] mx-auto px-5 sm:px-8 pb-8 sm:pb-12 pt-44 sm:pt-48 w-full text-center"
       >
         <m.p
           initial={{ opacity: 0, y: 14 }}
@@ -190,6 +190,16 @@ export default function Hero() {
           })}
         </div>
       </m.div>
+      <button
+        type="button"
+        onClick={() => document.getElementById('countdown')?.scrollIntoView({ behavior: prefersReduced ? 'auto' : 'smooth' })}
+        className="absolute z-20 bottom-9 left-8 hidden lg:flex items-center gap-3 text-[10px] uppercase tracking-[0.2em] text-white/75 hover:text-brand-gold-light transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold-light rounded-md"
+      >
+        <span className="flex h-9 w-6 items-start justify-center rounded-full border border-white/45 pt-1.5" aria-hidden="true">
+          <span className="h-1.5 w-1 rounded-full bg-brand-gold-light" />
+        </span>
+        Scroll to explore
+      </button>
     </section>
   );
 }

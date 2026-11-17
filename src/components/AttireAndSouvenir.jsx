@@ -27,6 +27,7 @@ export default function AttireAndSouvenir() {
     >
       <div className="max-w-[1100px] mx-auto">
         <ScrollReveal className="text-center mb-12">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-brand-gold-deep mb-3">02 / A day in colour</p>
           <h2 className="font-serif text-4xl sm:text-5xl text-brand-navy mb-3">
             Colours of the Day, Aso Ebi &amp; Souvenirs
           </h2>

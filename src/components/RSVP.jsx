@@ -60,6 +60,7 @@ export default function RSVP() {
     <section id="rsvp" className="py-20 lg:py-28 px-6 bg-white" style={{ scrollMarginTop: '72px' }}>
       <div className="max-w-[920px] mx-auto">
         <ScrollReveal className="text-center mb-12">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-brand-gold-deep mb-3">04 / Join us</p>
           <h2 className="font-serif text-4xl sm:text-5xl text-brand-navy mb-3">RSVP</h2>
           <p className="text-brand-muted text-sm sm:text-base">
             Please confirm attendance with any of our family coordinators below

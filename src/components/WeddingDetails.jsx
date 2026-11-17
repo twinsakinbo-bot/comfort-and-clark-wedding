@@ -101,6 +101,7 @@ export default function WeddingDetails() {
     >
       <div className="max-w-[1040px] mx-auto">
         <ScrollReveal className="text-center mb-14">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-brand-gold-deep mb-3">01 / The celebration</p>
           <h2 className="font-serif text-4xl sm:text-5xl text-brand-navy mb-3">
             Wedding Details
           </h2>

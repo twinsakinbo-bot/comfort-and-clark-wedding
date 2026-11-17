@@ -20,6 +20,19 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 72px;
+}
+
+section[id] {
+  scroll-margin-top: 72px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+@media (max-height: 760px) {
+  .chapter-rail.chapter-rail { display: none; }
 }
 
 body {

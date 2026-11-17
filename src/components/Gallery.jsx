@@ -19,6 +19,7 @@ export default function Gallery() {
     >
       <div className="max-w-[1040px] mx-auto">
         <ScrollReveal className="text-center mb-12">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-brand-gold-deep mb-3">03 / Our story</p>
           <h2 className="font-serif text-4xl sm:text-5xl text-brand-navy mb-3">
             {weddingData.couple.partner1} &amp; {weddingData.couple.partner2}
           </h2>
@@ -27,7 +28,7 @@ export default function Gallery() {
           </p>
         </ScrollReveal>
 
-        <StaggerGroup stagger={0.09} className="grid sm:grid-cols-2 gap-6">
+        <StaggerGroup stagger={0.09} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
           {weddingData.gallery.map((photo, i) => (
             <StaggerItem key={photo.src}>
               <m.button
@@ -39,7 +40,7 @@ export default function Gallery() {
                   setLightboxIndex(i);
                   setLightboxOpen(true);
                 }}
-                className="w-full rounded-2xl overflow-hidden cursor-pointer group aspect-[4/5] bg-brand-navy border border-brand-border shadow-[0_10px_28px_rgba(11,28,58,0.08)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-navy"
+                className="w-full rounded-2xl overflow-hidden cursor-pointer group aspect-[4/5] lg:aspect-[3/4] bg-brand-navy border border-brand-border shadow-[0_10px_28px_rgba(11,28,58,0.08)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-navy"
                 aria-label={`Open couple photo ${i + 1}`}
               >
                 <img

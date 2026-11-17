@@ -8,6 +8,7 @@ import Gallery from './components/Gallery';
 import RSVP from './components/RSVP';
 import Footer from './components/Footer';
 import { ScrollProgressLine } from './components/MotionPrimitives';
+import ChapterRail from './components/ChapterRail';
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
         <div className="min-h-screen bg-brand-cream text-brand-ink font-sans">
           <Header />
           <ScrollProgressLine />
+          <ChapterRail />
           <main>
             <Hero />
             <Countdown />

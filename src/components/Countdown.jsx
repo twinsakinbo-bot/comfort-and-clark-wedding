@@ -31,8 +31,10 @@ export default function Countdown() {
   ];
 
   return (
-    <section className="py-16 lg:py-20 px-6 border-b border-brand-border bg-white">
+    <section id="countdown" className="py-16 lg:py-24 px-6 border-b border-brand-border bg-white">
       <div className="max-w-[760px] mx-auto text-center">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-brand-gold-deep mb-3">The celebration begins in</p>
+        <p className="font-serif italic text-2xl sm:text-3xl text-brand-navy mb-9">Every moment brings us closer</p>
         <StaggerGroup className="grid grid-cols-4 divide-x divide-brand-border" stagger={0.07}>
           {units.map((unit) => (
             <StaggerItem key={unit.label} className="px-2">
