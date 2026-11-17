@@ -62,62 +62,15 @@ export default function RSVP() {
     } rounded-xl text-sm text-brand-navy placeholder:text-brand-muted/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-navy/30 focus-visible:border-brand-navy transition-colors`;
 
   return (
-    <section id="rsvp" className="py-20 lg:py-28 px-6 bg-white" style={{ scrollMarginTop: '72px' }}>
+    <section id="rsvp" className="py-16 lg:py-20 px-6 bg-white" style={{ scrollMarginTop: '72px' }}>
       <div className="max-w-[920px] mx-auto">
-        <ScrollReveal className="text-center mb-12">
+        <ScrollReveal className="text-center mb-10">
           <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-brand-gold-deep mb-3">04 / Join us</p>
           <h2 className="font-serif text-4xl sm:text-5xl text-brand-navy mb-3">RSVP</h2>
           <p className="text-brand-muted text-sm sm:text-base">
-            Please confirm attendance with any of our family coordinators below
+            Send your RSVP via WhatsApp, or contact a family coordinator directly
           </p>
         </ScrollReveal>
-
-        {/* Official RSVP Contacts from the Invitation */}
-        <StaggerGroup stagger={0.08} className="grid md:grid-cols-3 gap-4 mb-12">
-          {weddingData.rsvpContacts.map((contact, idx) => (
-            <StaggerItem key={contact.name}>
-              <m.div
-                whileHover={{ y: -3 }}
-                transition={{ duration: 0.25, ease: APPLE_EASE }}
-                className="border border-brand-border rounded-2xl p-6 text-center bg-brand-sky-wash shadow-[0_6px_20px_rgba(11,28,58,0.04)] h-full flex flex-col justify-between"
-              >
-                <div>
-                  <h3 className="font-serif text-2xl text-brand-navy mb-1">{contact.name}</h3>
-                  <p className="text-sm text-brand-muted font-medium mb-5">{contact.phone}</p>
-                </div>
-                <div className="flex gap-2 justify-center">
-                  <m.a
-                    whileTap={{ scale: 0.96 }}
-                    href={`tel:${contact.tel}`}
-                    className="inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-full bg-brand-navy text-brand-cream text-xs font-medium hover:bg-brand-navy-mid transition-colors flex-1"
-                  >
-                    <Phone size={12} />
-                    Call
-                  </m.a>
-                  <m.button
-                    whileTap={{ scale: 0.96 }}
-                    type="button"
-                    onClick={() => copyPhone(contact.phone, idx)}
-                    className="inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-full border border-brand-border bg-white text-brand-navy text-xs font-medium hover:bg-brand-cream transition-colors cursor-pointer"
-                    aria-label={`Copy phone number for ${contact.name}`}
-                  >
-                    {copiedPhone === idx ? (
-                      <>
-                        <Check size={12} />
-                        Copied
-                      </>
-                    ) : (
-                      <>
-                        <Copy size={12} />
-                        Copy
-                      </>
-                    )}
-                  </m.button>
-                </div>
-              </m.div>
-            </StaggerItem>
-          ))}
-        </StaggerGroup>
 
         {/* Prepare an RSVP message for the first coordinator on WhatsApp */}
         <ScrollReveal delay={0.1} className="max-w-[620px] mx-auto">
@@ -271,6 +224,54 @@ export default function RSVP() {
             )}
           </AnimatePresence>
         </ScrollReveal>
+
+        <h3 className="mt-12 mb-5 text-center font-serif text-2xl sm:text-3xl text-brand-navy">Prefer to call?</h3>
+        {/* Official RSVP Contacts from the Invitation */}
+        <StaggerGroup stagger={0.08} className="grid md:grid-cols-3 gap-4">
+          {weddingData.rsvpContacts.map((contact, idx) => (
+            <StaggerItem key={contact.name}>
+              <m.div
+                whileHover={{ y: -3 }}
+                transition={{ duration: 0.25, ease: APPLE_EASE }}
+                className="border border-brand-border rounded-2xl p-6 text-center bg-brand-sky-wash shadow-[0_6px_20px_rgba(11,28,58,0.04)] h-full flex flex-col justify-between"
+              >
+                <div>
+                  <h3 className="font-serif text-2xl text-brand-navy mb-1">{contact.name}</h3>
+                  <p className="text-sm text-brand-muted font-medium mb-5">{contact.phone}</p>
+                </div>
+                <div className="flex gap-2 justify-center">
+                  <m.a
+                    whileTap={{ scale: 0.96 }}
+                    href={`tel:${contact.tel}`}
+                    className="inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-full bg-brand-navy text-brand-cream text-xs font-medium hover:bg-brand-navy-mid transition-colors flex-1"
+                  >
+                    <Phone size={12} />
+                    Call
+                  </m.a>
+                  <m.button
+                    whileTap={{ scale: 0.96 }}
+                    type="button"
+                    onClick={() => copyPhone(contact.phone, idx)}
+                    className="inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-full border border-brand-border bg-white text-brand-navy text-xs font-medium hover:bg-brand-cream transition-colors cursor-pointer"
+                    aria-label={`Copy phone number for ${contact.name}`}
+                  >
+                    {copiedPhone === idx ? (
+                      <>
+                        <Check size={12} />
+                        Copied
+                      </>
+                    ) : (
+                      <>
+                        <Copy size={12} />
+                        Copy
+                      </>
+                    )}
+                  </m.button>
+                </div>
+              </m.div>
+            </StaggerItem>
+          ))}
+        </StaggerGroup>
       </div>
     </section>
   );

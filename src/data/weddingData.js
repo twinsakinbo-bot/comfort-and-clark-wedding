@@ -130,14 +130,14 @@ export const weddingData = {
 
   gallery: [
     {
-      src: '/images/couple-proposal.webp',
-      alt: 'Clark proposing to Comfort under a blue and white floral arch',
-      position: '50% 34%',
-    },
-    {
       src: '/images/couple-portrait.webp',
       alt: 'Comfort and Clark smiling together holding red roses',
       position: '50% 10%',
+    },
+    {
+      src: '/images/couple-proposal.webp',
+      alt: 'Clark proposing to Comfort under a blue and white floral arch',
+      position: '50% 34%',
     },
     {
       src: '/images/couple-sparklers.webp',

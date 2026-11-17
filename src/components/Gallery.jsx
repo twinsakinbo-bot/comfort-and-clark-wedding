@@ -14,11 +14,11 @@ export default function Gallery() {
   return (
     <section
       id="gallery"
-      className="py-20 lg:py-28 px-6 bg-brand-sky-wash border-b border-brand-border"
+      className="py-16 lg:py-20 px-6 bg-brand-sky-wash border-b border-brand-border"
       style={{ scrollMarginTop: '72px' }}
     >
       <div className="max-w-[1040px] mx-auto">
-        <ScrollReveal className="text-center mb-12">
+        <ScrollReveal className="text-center mb-10">
           <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-brand-gold-deep mb-3">03 / Our story</p>
           <h2 className="font-serif text-4xl sm:text-5xl text-brand-navy mb-3">
             {weddingData.couple.partner1} &amp; {weddingData.couple.partner2}

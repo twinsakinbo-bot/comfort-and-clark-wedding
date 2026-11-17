@@ -123,7 +123,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.75, delay: 0.38, ease: APPLE_EASE }}
-          className="font-serif italic text-base sm:text-xl text-brand-gold-light mb-2"
+          className="font-serif text-lg sm:text-2xl font-medium leading-snug text-white mb-2 drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)]"
         >
           {weddingData.couple.ceremonyType} &bull; {weddingData.specialCelebration.milestone} of{' '}
           {weddingData.specialCelebration.honoree}
