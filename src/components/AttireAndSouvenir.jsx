@@ -115,7 +115,7 @@ export default function AttireAndSouvenir() {
                   <div className="aspect-square overflow-hidden bg-white">
                     <img
                       src={souvenir.image}
-                      alt={`${souvenir.label} — ${souvenir.subtitle}`}
+                      alt={souvenir.subtitle ? `${souvenir.label} — ${souvenir.subtitle}` : souvenir.label}
                       loading="lazy"
                       decoding="async"
                       className="w-full h-full object-cover object-center transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
@@ -123,9 +123,11 @@ export default function AttireAndSouvenir() {
                   </div>
                   <div className="p-5 flex-1">
                     <p className="font-serif text-xl text-brand-navy">{souvenir.label}</p>
-                    <p className="text-xs text-brand-muted mt-1 leading-relaxed">
-                      {souvenir.subtitle}
-                    </p>
+                    {souvenir.subtitle && (
+                      <p className="text-xs text-brand-muted mt-1 leading-relaxed">
+                        {souvenir.subtitle}
+                      </p>
+                    )}
                   </div>
                 </m.button>
               </StaggerItem>

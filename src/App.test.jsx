@@ -40,12 +40,13 @@ describe('Comfort & Clark Wedding Site', () => {
     expect(screen.getByText("Women's Aso Ebi Souvenir")).toBeTruthy();
     expect(screen.getByText("Men's Aso Ebi Souvenir")).toBeTruthy();
     expect(screen.getByText('Aso Ebi Souvenir Bag')).toBeTruthy();
-    expect(screen.getByText('Wedding Souvenir')).toBeTruthy();
+    expect(screen.getByText('General Souvenir')).toBeTruthy();
 
     // RSVP Contacts
     expect(screen.getByText('Mr Sunday Ibtoye')).toBeTruthy();
     expect(screen.getByText('Mr Dayo Akinrelure')).toBeTruthy();
     expect(screen.getByText('Mr Segun Ajala')).toBeTruthy();
+    expect(screen.getByText('+2349135365485')).toBeTruthy();
 
     // Built by Solomon T.
     expect(screen.getByText(/Built by Solomon T\./i)).toBeTruthy();

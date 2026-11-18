@@ -50,12 +50,13 @@ describe('weddingData', () => {
     }
   });
 
-  it('includes all three official RSVP coordinators from the invitation', () => {
-    expect(weddingData.rsvpContacts).toHaveLength(3);
+  it('includes the RSVP coordinators and Solomon T.', () => {
+    expect(weddingData.rsvpContacts).toHaveLength(4);
     expect(weddingData.rsvpContacts.map((c) => c.name)).toEqual([
       'Mr Sunday Ibtoye',
       'Mr Dayo Akinrelure',
       'Mr Segun Ajala',
+      'Solomon T.',
     ]);
   });
 });
