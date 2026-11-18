@@ -40,6 +40,7 @@ describe('weddingData', () => {
     expect(weddingData.gallery).toHaveLength(4);
 
     const imagePaths = [
+      weddingData.specialCelebration.photo,
       ...weddingData.asoEbi.map((item) => item.image),
       ...weddingData.souvenirs.map((item) => item.image),
       ...weddingData.gallery.map((item) => item.src),

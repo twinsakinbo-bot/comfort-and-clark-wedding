@@ -13,6 +13,7 @@ export const weddingData = {
     label: "Bride's Mother",
     milestone: '60th Birthday',
     honoree: 'Mrs. Idowu Akinbo',
+    photo: '/images/mrs-idowu-akinbo-birthday.webp',
   },
 
   // Saturday, 09 January 2027 at 10:00 AM WAT (Lagos, UTC+1)

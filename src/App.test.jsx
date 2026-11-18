@@ -24,6 +24,7 @@ describe('Comfort & Clark Wedding Site', () => {
     expect(screen.getAllByText(/Mr & Mrs Akinbo/i).length).toBeGreaterThan(0);
     expect(screen.getAllByText(/Mr & Mrs Monks/i).length).toBeGreaterThan(0);
     expect(screen.getAllByText(/Mrs\. Idowu Akinbo/i).length).toBeGreaterThan(0);
+    expect(screen.getByAltText('Mrs. Idowu Akinbo wearing a blue dress and pink gele')).toBeTruthy();
     expect(screen.getAllByText(/Funplex Event Center/i).length).toBeGreaterThan(0);
     expect(screen.getByText(/No\. 39 CMD Road, Magodo, Ikosi, Lagos, Nigeria 100248/i)).toBeTruthy();
 

@@ -234,6 +234,27 @@ export default function WeddingDetails() {
             </StaggerGroup>
           </ScrollReveal>
         </div>
+
+        <ScrollReveal delay={0.08} className="mt-10 grid overflow-hidden rounded-3xl bg-brand-navy text-brand-cream shadow-[0_18px_48px_rgba(11,28,58,0.15)] md:grid-cols-[minmax(0,0.88fr)_minmax(0,1.12fr)]">
+          <div className="relative h-[390px] md:h-full md:min-h-[440px]">
+            <img
+              src={weddingData.specialCelebration.photo}
+              alt="Mrs. Idowu Akinbo wearing a blue dress and pink gele"
+              loading="lazy"
+              decoding="async"
+              className="absolute inset-0 h-full w-full object-cover object-[center_18%]"
+            />
+          </div>
+          <div className="flex flex-col justify-center px-8 py-10 sm:px-12 sm:py-14">
+            <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.22em] text-brand-gold-light">A double celebration</p>
+            <h3 className="font-serif text-4xl leading-tight sm:text-5xl">Honouring {weddingData.specialCelebration.honoree}</h3>
+            <div className="my-6 h-px w-16 bg-brand-gold-light/70" aria-hidden="true" />
+            <p className="font-serif text-3xl text-brand-gold-light">{weddingData.specialCelebration.milestone}</p>
+            <p className="mt-4 max-w-[34ch] text-sm leading-relaxed text-brand-cream/80">
+              Celebrating the bride’s mother with family and friends on Comfort &amp; Clark’s special day.
+            </p>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );
