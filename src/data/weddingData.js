@@ -44,11 +44,6 @@ export const weddingData = {
       phone: '+234 803 330 7235',
       tel: '+2348033307235',
     },
-    {
-      name: 'Solomon T.',
-      phone: '+2349135365485',
-      tel: '+2349135365485',
-    },
   ],
 
   programme: [
@@ -158,5 +153,6 @@ export const weddingData = {
 
   credits: {
     builtBy: 'Solomon T.',
+    phone: '+2349135365485',
   },
 };

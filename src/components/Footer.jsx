@@ -25,6 +25,13 @@ export default function Footer() {
 
         <div className="border-t border-white/10 pt-6 text-xs text-brand-cream/65">
           Built by {weddingData.credits.builtBy}
+          <span aria-hidden="true"> &bull; </span>
+          <a
+            href={`tel:${weddingData.credits.phone}`}
+            className="hover:text-brand-gold-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold-light"
+          >
+            {weddingData.credits.phone}
+          </a>
         </div>
       </ScrollReveal>
     </footer>

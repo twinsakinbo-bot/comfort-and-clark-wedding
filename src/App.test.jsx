@@ -46,10 +46,10 @@ describe('Comfort & Clark Wedding Site', () => {
     expect(screen.getByText('Mr Sunday Ibtoye')).toBeTruthy();
     expect(screen.getByText('Mr Dayo Akinrelure')).toBeTruthy();
     expect(screen.getByText('Mr Segun Ajala')).toBeTruthy();
-    expect(screen.getByText('+2349135365485')).toBeTruthy();
 
     // Built by Solomon T.
     expect(screen.getByText(/Built by Solomon T\./i)).toBeTruthy();
+    expect(screen.getByRole('link', { name: '+2349135365485' }).getAttribute('href')).toBe('tel:+2349135365485');
 
     // Hero slide switcher dots represent all 4 couple photos
     expect(screen.getByRole('button', { name: 'Show couple photo 1 of 4' })).toBeTruthy();

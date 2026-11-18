@@ -227,7 +227,7 @@ export default function RSVP() {
 
         <h3 className="mt-12 mb-5 text-center font-serif text-2xl sm:text-3xl text-brand-navy">Prefer to call?</h3>
         {/* Official RSVP Contacts from the Invitation */}
-        <StaggerGroup stagger={0.08} className="mx-auto grid max-w-[760px] sm:grid-cols-2 gap-4">
+        <StaggerGroup stagger={0.08} className="grid md:grid-cols-3 gap-4">
           {weddingData.rsvpContacts.map((contact, idx) => (
             <StaggerItem key={contact.name}>
               <m.div

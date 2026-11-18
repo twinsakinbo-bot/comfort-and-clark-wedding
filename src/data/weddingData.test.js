@@ -14,6 +14,7 @@ describe('weddingData', () => {
     expect(weddingData.specialCelebration.honoree).toBe('Mrs. Idowu Akinbo');
     expect(weddingData.specialCelebration.milestone).toBe('60th Birthday');
     expect(weddingData.credits.builtBy).toBe('Solomon T.');
+    expect(weddingData.credits.phone).toBe('+2349135365485');
   });
 
   it('sets the event date, time, and Funplex Event Center venue details', () => {
@@ -50,13 +51,12 @@ describe('weddingData', () => {
     }
   });
 
-  it('includes the RSVP coordinators and Solomon T.', () => {
-    expect(weddingData.rsvpContacts).toHaveLength(4);
+  it('includes the three official RSVP coordinators', () => {
+    expect(weddingData.rsvpContacts).toHaveLength(3);
     expect(weddingData.rsvpContacts.map((c) => c.name)).toEqual([
       'Mr Sunday Ibtoye',
       'Mr Dayo Akinrelure',
       'Mr Segun Ajala',
-      'Solomon T.',
     ]);
   });
 });
